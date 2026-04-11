@@ -24,7 +24,7 @@ public:
     void setStrategy(std::unique_ptr<IBettingStrategy> newStrategy);
 
     // 4. Các hàm hành vi: Hỏi chiến thuật xem ván này đánh bao nhiêu và đánh cửa nào
-    double calculateNextBet();
+    double calculateNextBet(bool lastBetWon);
     int determineBetSide(); // Ví dụ trả về 0 là Xỉu, 1 là Tài
 };
 
