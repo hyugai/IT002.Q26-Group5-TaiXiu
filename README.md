@@ -28,9 +28,11 @@ Xác suất thắng của cửa Tài và cửa Xỉu luôn là 50/50 công bằn
 
 **3. Đứng ở góc độ Người Chơi: Bài toán tìm kiếm chuỗi thắng**
 
-Mục tiêu của người chơi là "ăn nhiều tay liên tục nhất có thể". Để làm được điều này, người chơi ảo của chúng ta không đánh bừa mà phải dùng chiến thuật quản lý vốn. Nhóm sẽ code và so sánh 2 chiến thuật kinh điển:
+Mục tiêu của người chơi là "ăn nhiều tay liên tục nhất có thể". Để làm được điều này, người chơi ảo của chúng ta không đánh bừa mà phải dùng chiến thuật quản lý vốn. Nhóm sẽ code và so sánh 3 chiến thuật kinh điển:
 
 Chiến thuật Martingale (Gấp thếp khi thua): Thua ván này, ván sau cược tiền gấp đôi để gỡ. Nhìn qua thì có vẻ an toàn, nhưng đây là "mồ chôn" của con bạc. Chỉ cần đen một chút (thua 7-8 ván liên tiếp), số tiền cần cược để gỡ sẽ khổng lồ và người chơi sẽ phá sản ngay lập tức.
+
+3.2 Hệ thống Fibonacci (Kiểm soát biến động bảo thủ): Fibonacci là một tiến trình âm mềm mỏng hơn, trong đó số tiền cược sau một lần thua được tăng lên theo chuỗi toán học Fibonacci (1, 1, 2, 3, 5, 8...). Do không nhân đôi, quỹ đạo vốn bị sụt giảm chậm hơn đáng kể trong các chuỗi thua kéo dài. Mặc dù kiểm soát rủi ro xuất sắc, Fibonacci vẫn mang tính phòng thủ và không giải quyết trực tiếp bài toán "tối đa hóa chuỗi thắng" mà đề bài yêu cầu.
 
 Chiến thuật Paroli (Nhân đôi khi thắng - Lựa chọn tối ưu): Thua thì giữ nguyên mức cược nhỏ nhất, nhưng nếu thắng thì lấy cả vốn lẫn lãi cược tiếp để tạo ra một chuỗi thắng lớn. Cách này dùng chính tiền của nhà cái để đầu tư, và nếu lỡ có thua ở giữa chừng, người chơi cũng chỉ mất đúng 1 đồng vốn nhỏ nhoi ban đầu. Đây là câu trả lời của nhóm cho cách chơi tối ưu nhất.
 
