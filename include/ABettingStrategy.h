@@ -1,5 +1,4 @@
-#ifndef A_BETTING_STRATEGY_H
-#define A_BETTING_STRATEGY_H
+#pragma once
 
 enum class BetType
 {
@@ -34,5 +33,3 @@ protected:
   // Constructor cho lớp cha
   ABettingStrategy(double baseBet) : dBaseBet(baseBet), dCurrentBet(baseBet) {}
 };
-
-#endif // A_BETTING_STRATEGY_H

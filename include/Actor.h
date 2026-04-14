@@ -1,5 +1,4 @@
-#ifndef ACTOR_H
-#define ACTOR_H
+#pragma once
 
 struct Actor
 {
@@ -12,5 +11,3 @@ struct Actor
 protected: // Đổi từ private sang protected để Player và House lấy được tiền
   double dBalance;
 };
-
-#endif // ACTOR_H
