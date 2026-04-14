@@ -1,5 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 #include <memory>
 #include "Actor.h"
@@ -25,5 +24,3 @@ public:
 
     Bet getCurrentBet() const;
 };
-
-#endif // PLAYER_H
