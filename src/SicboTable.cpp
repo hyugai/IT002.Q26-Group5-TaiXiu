@@ -1,8 +1,8 @@
-#include "SicboTable.h"
-#include "SicBoTable.h"
-#include<iostream>
+#include "Table.h"
+#include <iostream>
 
-Table::Table() {
+Table::Table(const House& h, const Player& p)
+    : house(h), player(p) {
     dices = std::vector<Dice>(3);
 }
 

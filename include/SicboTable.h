@@ -1,33 +1,20 @@
-
-#ifndef SICBOTABLE_H
-#define SICBOTABLE_H
-
+﻿#pragma once
 #include <vector>
 #include "Dice.h"
-
-class House {
-};
-
-class Player {
-};
-
-class RoundRecord {
-};
+#include "House.h"
+#include "Player.h"
+#include "RoundRecord.h" 
 
 class Table {
 private:
     std::vector<Dice> dices;
-
     House house;
-
     Player player;
-
     std::vector<RoundRecord> records;
 
 public:
-    Table();
+    // Constructor nhận vào thông tin House và Player 
+    Table(const House& h, const Player& p);
 
     void play();
 };
-
-#endif
