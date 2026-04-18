@@ -1,3 +1,0 @@
-/home/quoccong2810/IT002.Q26-Group5-TaiXiu/build/CMakeFiles/TaiXiuSim.dir
-/home/quoccong2810/IT002.Q26-Group5-TaiXiu/build/CMakeFiles/edit_cache.dir
-/home/quoccong2810/IT002.Q26-Group5-TaiXiu/build/CMakeFiles/rebuild_cache.dir
