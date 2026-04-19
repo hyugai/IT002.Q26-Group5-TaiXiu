@@ -2,6 +2,7 @@
 #include "../include/Table.h"
 #include <cstdlib>
 #include <fstream>
+#include <random>
 
 using namespace std;
 
@@ -35,8 +36,10 @@ void SimulationEngine::addStrategy(string const& name, StrategyFactory factory) 
  */
 void SimulationEngine::run() {
     results.clear();
+    std::random_device rd;
+    unsigned int seed = rd(); // Seed ngẫu nhiên thật từ phần cứng — khác nhau mỗi lần chạy
     for (auto& [name, factory] : strategies) {
-        srand(42); // Reset seed để mỗi chiến thuật đối mặt cùng chuỗi xúc xắc
+        srand(seed); // Cùng seed trong 1 lần chạy → so sánh các chiến thuật vẫn công bằng
         results.emplace_back(name, runOne(factory));
     }
 }
@@ -53,8 +56,7 @@ void SimulationEngine::run() {
 vector<RoundRecord> SimulationEngine::runOne(StrategyFactory& factory) {
     House  house(0.05, baseBet, maxBet);
     Player player(initialBankroll);
-    player.setStrategy(factory());         // Gán chiến thuật mới
-    player.placeBet(BetResult::Win);       // Tính cược đầu tiên (giả sử ván trước thắng)
+    player.setStrategy(factory()); // Gán chiến thuật + tự khởi tạo cược đầu = baseBet
 
     Table table(house, std::move(player));
     for (int i = 0; i < totalRounds; i++)

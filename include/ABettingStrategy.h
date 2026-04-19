@@ -25,6 +25,9 @@ struct ABettingStrategy
   virtual Bet calNextBet(BetResult const &prevResult) = 0;
   virtual void reset();
 
+  /* Trả về mức cược gốc — dùng để khởi tạo cược đầu tiên đúng cách */
+  double getBaseBet() const { return dBaseBet; }
+
   virtual ~ABettingStrategy() = default;
 
 protected:
