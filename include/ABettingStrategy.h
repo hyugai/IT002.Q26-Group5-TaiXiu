@@ -18,6 +18,8 @@ class ABettingStrategy {
     virtual Bet calNextBet(BetResult const &) = 0;
     virtual void reset();
 
+    double getBaseBet() const { return base_bet; }
+
   protected:
     ABettingStrategy(double);
 

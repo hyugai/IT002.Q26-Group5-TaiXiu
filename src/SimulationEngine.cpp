@@ -1,7 +1,7 @@
 #include "../include/SimulationEngine.h"
 #include "../include/Table.h"
 #include <cstdlib>
-#include <fstream>
+#include <random>
 
 using namespace std;
 
@@ -30,13 +30,14 @@ void SimulationEngine::addStrategy(string const &name,
 /* *
  * @brief Chạy toàn bộ mô phỏng
  *
- * Mỗi chiến thuật được chạy riêng với srand(42) ở đầu → cùng chuỗi
- * xúc xắc → so sánh công bằng giữa các chiến thuật.
+ * Mỗi chiến thuật dùng cùng seed (sinh từ random_device) → cùng chuỗi xúc
+ * xắc → so sánh công bằng. Seed thay đổi mỗi lần chạy chương trình.
  * */
 void SimulationEngine::run() {
     results.clear();
+    unsigned int seed = std::random_device{}();
     for (auto &[name, factory] : strategies) {
-        srand(42); // Reset seed để mỗi chiến thuật đối mặt cùng chuỗi xúc xắc
+        srand(seed); // Cùng seed trong 1 lần chạy → so sánh các chiến thuật vẫn công bằng
         results.emplace_back(name, runOne(factory));
     }
 }
@@ -53,9 +54,7 @@ void SimulationEngine::run() {
 vector<RoundRecord> SimulationEngine::runOne(StrategyFactory &factory) {
     House house(0.05, base_bet, max_bet);
     Player player(initial_bankroll);
-    player.setStrategy(factory()); // Gán chiến thuật mới
-    player.placeBet(
-        BetResult::Win); // Tính cược đầu tiên (giả sử ván trước thắng)
+    player.setStrategy(factory()); // Gán chiến thuật + tự khởi tạo cược đầu = base_bet
 
     Table table(house, std::move(player));
     for (int i = 0; i < total_rounds; i++)
@@ -67,27 +66,17 @@ vector<RoundRecord> SimulationEngine::runOne(StrategyFactory &factory) {
 /*
  * @brief Xuất kết quả tất cả chiến thuật ra 1 file CSV
  *
- * Format: Strategy, Round, Bet Side, Bet Amount, Result, Bankroll
+ * Chiến thuật đầu tiên ghi header, các chiến thuật sau append vào file.
  *
  * @param filename Tên file CSV đầu ra
  * @return true nếu mở/ghi file thành công
  */
 bool SimulationEngine::exportCSV(string const &filename) const {
-    ofstream file(filename);
-    if (!file.is_open())
-        return false;
-
-    file << "strategy,round,side,amount,result,bankroll\n";
-
+    CSVExporter exporter(filename);
+    bool first = true;
     for (auto const &[name, records] : results) {
-        int round = 1;
-        for (auto const &r : records) {
-            file << name << "," << round++ << ","
-                 << (r.bet.type == BetType::Xiu ? "Xiu" : "Tai") << ","
-                 << r.bet.amount << ","
-                 << (r.result == BetResult::Win ? "Win" : "Lose") << ","
-                 << r.current_bankroll << "\n";
-        }
+        exporter.exportToCSV(name, records, first); // first=true → ghi header lần đầu
+        first = false;
     }
     return true;
 }
