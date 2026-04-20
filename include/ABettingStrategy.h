@@ -13,7 +13,7 @@ class Bet {
 
 class ABettingStrategy {
   public:
-    // virtual ~ABettingStrategy() = default;
+    virtual ~ABettingStrategy() = default;
 
     virtual Bet calNextBet(BetResult const &) = 0;
     virtual void reset();

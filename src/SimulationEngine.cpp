@@ -37,7 +37,8 @@ void SimulationEngine::run() {
     results.clear();
     unsigned int seed = std::random_device{}();
     for (auto &[name, factory] : strategies) {
-        srand(seed); // Cùng seed trong 1 lần chạy → so sánh các chiến thuật vẫn công bằng
+        srand(seed); // Cùng seed trong 1 lần chạy → so sánh các chiến thuật vẫn
+                     // công bằng
         results.emplace_back(name, runOne(factory));
     }
 }
@@ -54,7 +55,8 @@ void SimulationEngine::run() {
 vector<RoundRecord> SimulationEngine::runOne(StrategyFactory &factory) {
     House house(0.05, base_bet, max_bet);
     Player player(initial_bankroll);
-    player.setStrategy(factory()); // Gán chiến thuật + tự khởi tạo cược đầu = base_bet
+    player.setStrategy(
+        factory()); // Gán chiến thuật + tự khởi tạo cược đầu = base_bet
 
     Table table(house, std::move(player));
     for (int i = 0; i < total_rounds; i++)
@@ -71,11 +73,12 @@ vector<RoundRecord> SimulationEngine::runOne(StrategyFactory &factory) {
  * @param filename Tên file CSV đầu ra
  * @return true nếu mở/ghi file thành công
  */
-bool SimulationEngine::exportCSV(string const &filename) const {
-    CSVExporter exporter(filename);
+bool SimulationEngine::exportCSV(string const &file_name) const {
+    CSVExporter exporter(file_name);
     bool first = true;
     for (auto const &[name, records] : results) {
-        exporter.exportToCSV(name, records, first); // first=true → ghi header lần đầu
+        exporter.exportToCSV(name, records,
+                             first); // first=true → ghi header lần đầu
         first = false;
     }
     return true;

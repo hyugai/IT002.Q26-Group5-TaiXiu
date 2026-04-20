@@ -10,7 +10,5 @@ class CSVExporter {
   public:
     CSVExporter(const string &);
 
-    void exportToCSV(const string &strategyName,
-                     const vector<RoundRecord> &records,
-                     bool writeHeader = false);
+    void exportToCSV(const string &, const vector<RoundRecord> &, bool = false);
 };

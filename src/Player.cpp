@@ -1,25 +1,20 @@
 #include "../include/Player.h"
 #include <cstdlib>
 
-/* *
- * @brief Khởi tạo đối tượng Player với số dư ban đầu.
- * @param initial_balance Số tiền ban đầu trong tài khoản của người chơi.
- * @return None Không có.
- * */
-Player::Player(double initial_balance) : current_bet(BetType::Xiu, 0.0)
-{
+Player::Player(double initial_balance) : current_bet(BetType::Xiu, 0.0) {
     setBalance(initial_balance);
     strategy = nullptr;
 }
 
-/* *
- * @brief Thiết lập chiến thuật đặt cược mới cho người chơi.
- * @param newStrategy Con trỏ thông minh (unique_ptr) quản lý chiến thuật mới.
- * @return void Không trả về giá trị.
- * */
-void Player::setStrategy(unique_ptr<ABettingStrategy> newStrategy)
-{
-    strategy = std::move(newStrategy);
+/*
+ * @brief Gán chiến thuật mới, reset state và khởi tạo cược đầu tiên = base_bet
+ *
+ * reset() đưa strategy về trạng thái sạch — tránh Paroli/Fibonacci bị ảnh
+ * hưởng bởi state còn sót. Cược đầu set trực tiếp thay vì gọi calNextBet()
+ * để không làm tăng cược ngay ở ván 1.
+ */
+void Player::setStrategy(unique_ptr<ABettingStrategy> new_strategy) {
+    strategy = std::move(new_strategy);
     strategy->reset();
     BetType side = (rand() % 2 == 0) ? BetType::Xiu : BetType::Tai;
     current_bet = Bet(side, strategy->getBaseBet());
