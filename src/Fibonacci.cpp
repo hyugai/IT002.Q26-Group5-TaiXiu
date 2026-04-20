@@ -13,7 +13,9 @@ Fibonacci::Fibonacci(double base_bet) : ABettingStrategy(base_bet) {
 /* *
  * @brief Tính toán giá trị số Fibonacci tại vị trí n để làm hệ số nhân tiền
  * cược.
+ *
  * @param n Chỉ số trong dãy Fibonacci.
+ *
  * @return Giá trị số Fibonacci tương ứng với chỉ số n.
  * */
 int Fibonacci::getFibonacciMultiplier(int n) {
@@ -36,7 +38,7 @@ int Fibonacci::getFibonacciMultiplier(int n) {
  * @param prev_result Kết quả của lượt cược vừa rồi (Thắng/Thua).
  * @return Đối tượng Bet chứa thông tin cửa đặt và số tiền cược mới.
  * */
-Bet Fibonacci::calNextBet(BetResult const &prev_result) {
+Bet Fibonacci::calcNextBet(BetResult const &prev_result) {
     if (prev_result == BetResult::Win) {
         current_idx -= 2;
         if (current_idx < 0) {
@@ -55,7 +57,9 @@ Bet Fibonacci::calNextBet(BetResult const &prev_result) {
 /* *
  * @brief Đặt lại trạng thái của chiến thuật về mặc định (vị trí đầu tiên trong
  * dãy).
+ *
  * @param Không có.
+ *
  * @return Không có.
  * */
 void Fibonacci::reset() {

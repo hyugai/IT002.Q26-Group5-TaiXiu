@@ -10,6 +10,6 @@ class Fibonacci : public ABettingStrategy {
   public:
     Fibonacci(double);
 
-    Bet calNextBet(BetResult const &) override;
+    Bet calcNextBet(BetResult const &) override;
     void reset() override;
 };

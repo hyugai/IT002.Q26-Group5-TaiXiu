@@ -8,6 +8,6 @@ class Paroli : public ABettingStrategy {
   public:
     Paroli(double, int);
 
-    Bet calNextBet(BetResult const &) override;
+    Bet calcNextBet(BetResult const &) override;
     void reset() override;
 };

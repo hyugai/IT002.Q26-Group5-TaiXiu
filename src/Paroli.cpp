@@ -15,11 +15,13 @@ Paroli::Paroli(double base_bet, int target_wins) : ABettingStrategy(base_bet) {
 /* *
  * @brief Tính toán lượt cược tiếp theo (gấp đôi mức cược khi thắng cho đến khi
  * đạt mục tiêu, về mức cơ bản nếu thua).
+ *
  * @param prev_result Kết quả của lượt cược trước đó (BetResult).
+ *
  * @return Bet Đối tượng Bet chứa thông tin cửa đặt và số tiền cược được tính
  * toán.
  * */
-Bet Paroli::calNextBet(BetResult const &prev_result) {
+Bet Paroli::calcNextBet(BetResult const &prev_result) {
     if (prev_result == BetResult::Win) {
         consecutive_wins++;
         if (consecutive_wins >= target_wins) {
@@ -40,7 +42,9 @@ Bet Paroli::calNextBet(BetResult const &prev_result) {
 /* *
  * @brief Đặt lại trạng thái chiến thuật (reset số trận thắng liên tiếp và mức
  * cược).
+ *
  * @param void
+ *
  * @return void trả về giá trị.
  * */
 void Paroli::reset() {

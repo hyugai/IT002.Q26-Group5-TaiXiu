@@ -15,10 +15,10 @@ class ABettingStrategy {
   public:
     virtual ~ABettingStrategy() = default;
 
-    virtual Bet calNextBet(BetResult const &) = 0;
+    virtual Bet calcNextBet(BetResult const &) = 0;
     virtual void reset();
 
-    double getBaseBet() const { return base_bet; }
+    double getBaseBet() const;
 
   protected:
     ABettingStrategy(double);
