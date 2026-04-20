@@ -4,7 +4,6 @@
 /* *
  * @brief Khởi tạo chiến thuật đặt cược Martingale.
  * @param base_bet Mức tiền cược cơ bản ban đầu.
- * @return None Không có.
  * */
 Martingale::Martingale(double base_bet) : ABettingStrategy(base_bet) {}
 

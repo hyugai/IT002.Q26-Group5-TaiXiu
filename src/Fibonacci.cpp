@@ -4,7 +4,6 @@
 /* *
  * @brief Khởi tạo chiến thuật đặt cược Fibonacci với mức cược cơ bản.
  * @param base_bet Mức tiền cược cơ sở ban đầu.
- * @return Không có.
  * */
 Fibonacci::Fibonacci(double base_bet) : ABettingStrategy(base_bet) {
     current_idx = 0;

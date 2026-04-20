@@ -1,7 +1,12 @@
 #include "../include/Player.h"
 #include <cstdlib>
 
-/**/
+/*
+ * @brief Khởi tạo Player với số dư ban đầu tùy ý và ván cược `Xiu` với số tiền
+ * cược là 0
+ *
+ * @param initial_balance Số dư ban đầu
+ * */
 Player::Player(double initial_balance) : current_bet(BetType::Xiu, 0.0) {
     setBalance(initial_balance);
     strategy = nullptr;
