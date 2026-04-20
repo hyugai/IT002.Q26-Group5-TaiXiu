@@ -1,0 +1,49 @@
+File                    QA          ClassDiagram    Name
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ABettingStrategy.h      0           x
+---------------------------------------------------------
+Actor.h                 0           x
+Actor.cpp               1
+---------------------------------------------------------
+Constants.h             1           0
+---------------------------------------------------------
+CSVExporter.h           0
+CSVExporter.cpp         0
+---------------------------------------------------------
+Dice.h                  0 
+---------------------------------------------------------
+Fibonacci.h             0           x
+---------------------------------------------------------
+House.h                 1           x
+---------------------------------------------------------
+Martingale.h            0           x
+Martingale.cpp          1 
+---------------------------------------------------------
+Paroli.h                0           x
+Paroli.h                1 
+---------------------------------------------------------
+Player.h                0           x
+Player.cpp              1
+---------------------------------------------------------
+RoundRecord.h           0           x
+---------------------------------------------------------
+SimulationEngine.h      1
+SimulationEngine.cpp    0
+---------------------------------------------------------
+Table.h                 1           x
+---------------------------------------------------------
+
+class: ClassName
+function/method: functionName
+variable: variable_name
+
+Dạng comment cần dùng:
+    /* *
+     * @brief <short explanation>
+     * @param <name> <details>
+     * @return <type> <short explanation>
+     * */
+
+Đặt comment ở đầu các hàm trong file đuôi .cpp trong src/, không phải các file đuôi .h trong inclde/
+
+Trong các file đuôi .h, không cần đặt tên cho tham số trong hàm/phương thức

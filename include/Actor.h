@@ -1,13 +1,13 @@
 #pragma once
 
-struct Actor
-{
-  double getBalance() const;
-  void setBalance(double amount);    // Bỏ const & đi
-  void updateBalance(double amount); // Bỏ const & đi
+class Actor {
+  public:
+    virtual ~Actor() = default;
 
-  virtual ~Actor() = default;
+    double getBalance() const;
+    void setBalance(double);
+    void updateBalance(double);
 
-protected: // Đổi từ private sang protected để Player và House lấy được tiền
-  double dBalance;
+  protected:
+    double balance;
 };

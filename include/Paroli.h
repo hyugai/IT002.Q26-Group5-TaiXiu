@@ -1,15 +1,13 @@
 #pragma once
 #include "ABettingStrategy.h"
 
-class Paroli : public ABettingStrategy
-{
-private:
-    int consecutiveWins;
-    int targetWins;
+class Paroli : public ABettingStrategy {
+    int consecutive_wins;
+    int target_wins;
 
-public:
-    Paroli(double baseBet, int targetWins);
+  public:
+    Paroli(double, int);
 
-    Bet calNextBet(BetResult const &prevResult) override;
+    Bet calNextBet(BetResult const &) override;
     void reset() override;
 };

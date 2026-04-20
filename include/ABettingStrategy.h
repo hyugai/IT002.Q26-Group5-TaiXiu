@@ -1,35 +1,25 @@
 #pragma once
 
-enum class BetType
-{
-  Tai,
-  Xiu
-};
-enum class BetResult
-{
-  Win,
-  Lose
-};
+enum class BetType { Tai, Xiu };
+enum class BetResult { Win, Lose };
 
-struct Bet
-{
-  BetType type;
-  double dAmount;
-  // Nên có Constructor để tạo Bet nhanh
-  Bet(BetType t, double a) : type(t), dAmount(a) {}
+class Bet {
+  public:
+    Bet(BetType, double);
+
+    BetType type;
+    double amount;
 };
 
-struct ABettingStrategy
-{
-  // 2 hàm này bắt buộc lớp con phải tự viết (vì có = 0)
-  virtual Bet calNextBet(BetResult const &prevResult) = 0;
-  virtual void reset();
+class ABettingStrategy {
+  public:
+    // virtual ~ABettingStrategy() = default;
 
-  virtual ~ABettingStrategy() = default;
+    virtual Bet calNextBet(BetResult const &) = 0;
+    virtual void reset();
 
-protected:
-  double dBaseBet, dCurrentBet;
+  protected:
+    ABettingStrategy(double);
 
-  // Constructor cho lớp cha
-  ABettingStrategy(double baseBet) : dBaseBet(baseBet), dCurrentBet(baseBet) {}
+    double base_bet, current_bet;
 };

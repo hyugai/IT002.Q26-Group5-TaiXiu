@@ -1,23 +1,20 @@
 #include "../include/Martingale.h"
-#include <cstdlib> // Dùng cho rand()
+#include <cstdlib>
 
-// Gọi trực tiếp Constructor của lớp cha (ABettingStrategy) để nó lưu tiền gốc
-Martingale::Martingale(double baseBet) : ABettingStrategy(baseBet) {}
+/* *
+ * QA: add comments
+ * */
 
-// Hàm tính cược mới (trả về kiểu Bet)
-Bet Martingale::calNextBet(BetResult const &prevResult)
-{
-    if (prevResult == BetResult::Win)
-    {
-        dCurrentBet = dBaseBet; // Thắng thì quay về mốc ban đầu
-    }
-    else
-    {
-        dCurrentBet *= 2; // Thua thì gấp đôi tiền
+Martingale::Martingale(double base_bet) : ABettingStrategy(base_bet) {}
+
+Bet Martingale::calNextBet(BetResult const &prev_result) {
+    if (prev_result == BetResult::Win) {
+        current_bet = base_bet;
+    } else {
+        current_bet *= 2;
     }
 
-    // Trò chơi tỷ lệ 50/50 nên chọn random Tài hoặc Xỉu
     BetType side = (rand() % 2 == 0) ? BetType::Xiu : BetType::Tai;
 
-    return Bet(side, dCurrentBet);
+    return Bet(side, current_bet);
 }

@@ -1,16 +1,9 @@
-#include "Actor.h"
+#include "../include/Actor.h"
 
-double Actor::getBalance() const
-{
-    return this->dBalance;
-}
+/* *
+ * QA: add comments
+ * */
 
-void Actor::setBalance(double amount)
-{
-    this->dBalance = amount;
-}
-
-void Actor::updateBalance(double amount)
-{
-    this->dBalance += amount;
-}
+double Actor::getBalance() const { return balance; }
+void Actor::setBalance(double amount) { balance = amount; }
+void Actor::updateBalance(double amount) { balance += amount; }
