@@ -17,6 +17,7 @@ Table::Table(const House& h, Player&& p)
  *   - Tổng 3 xúc xắc >= 11 → Tài, ngược lại → Xỉu
  *   - Thắng: nhận profit = bet * (1 - commissionRate)  [trừ tiền xâu]
  *   - Thua:  mất toàn bộ tiền cược
+ * @return void Không có giá trị trả về
  */
 void Table::play() {
     // Hết tiền thì dừng, không chơi thêm
@@ -63,6 +64,7 @@ void Table::play() {
 
 /*
  * @brief Trả về danh sách kết quả tất cả ván đã chơi (read-only)
+ * @return const std::vector<RoundRecord>& danh sách lịch sử cược
  */
 const std::vector<RoundRecord>& Table::getRecords() const {
     return records;

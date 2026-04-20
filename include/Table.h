@@ -14,7 +14,7 @@ class Table {
 
   public:
    
-    Table(const House &h, Player &&p);
+    Table(const House& , Player&& );
 
     void play();
 
