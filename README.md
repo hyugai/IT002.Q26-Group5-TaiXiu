@@ -45,3 +45,7 @@ Tại sao phải có mức cược tối đa? Để chống lại việc ngườ
 **5. Tại sao dự án này lại phải dùng Lập trình Hướng đối tượng (OOP)?**
 
 Để hệ thống chạy hàng triệu ván mà không bị lỗi hay rối code, nhóm phải chia game thành các "Thực thể" (Objects) giống hệt đời thực: Dice (Viên xúc xắc), Table (Bàn chơi), Player (Người chơi), House (Nhà cái). Chúng ta sẽ áp dụng các bộ khung code chuẩn gọi là Design Patterns (Mẫu thiết kế). Ví dụ: Nhờ dùng "Strategy Pattern" (Mẫu thiết kế chiến lược), phần mềm của chúng ta có thể dễ dàng thay đổi "não bộ" của người chơi từ đánh kiểu Martingale sang đánh kiểu Paroli chỉ bằng 1 dòng code mà không làm ảnh hưởng đến luật của bàn chơi.
+
+**6. Slide Canva**
+<https://canva.link/vrynfjxa5aj0x25>
+
